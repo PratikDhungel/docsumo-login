@@ -6,7 +6,7 @@
   padding: 30px 60px;
 }
 
-.form-container {
+.form-wrapper {
   height: 100%;
   display: flex;
   align-items: center;
@@ -24,6 +24,7 @@
 
 .login-form-container {
   width: 50%;
+  min-width: 548px;
   background-color: #fff;
   padding: 54px 64px;
   border-radius: 8px;
@@ -31,5 +32,5 @@
 
 .login-form-title {
   font-size: 24px;
-  margin-bottom: 8px;
+  margin-bottom: 28px;
 }

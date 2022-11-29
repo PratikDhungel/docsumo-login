@@ -5,7 +5,7 @@ import { LoginForm } from '../../components';
 const Login = () => {
   return (
     <div className='login-wrapper'>
-      <div className='form-container'>
+      <div className='form-wrapper'>
         <div className='app-logo'>
           <img src={appLogo} />
         </div>
