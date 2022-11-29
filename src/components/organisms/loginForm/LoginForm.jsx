@@ -15,7 +15,7 @@ const checkEmailPasswordValidity = (email, password) => {
   };
 };
 
-const LoginForm = ({ handleUserLogin }) => {
+const LoginForm = ({ handleUserLogin, isLoading }) => {
   const [formValues, setFormValues] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState({ email: '', password: '' });
   const [triggerValidation, setTriggerValidation] = useState(false);
@@ -92,7 +92,7 @@ const LoginForm = ({ handleUserLogin }) => {
         </div>
 
         <div className='mt-32' type='submit'>
-          <PrimaryButton>Login</PrimaryButton>
+          <PrimaryButton disabled={isLoading}>Login</PrimaryButton>
         </div>
       </form>
 

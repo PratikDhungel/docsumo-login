@@ -35,3 +35,14 @@
 .primary-button:focus {
   outline: 0;
 }
+
+.button-disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  background: #cccccc;
+  color: #666666;
+}
+
+.button-disabled:hover {
+  background: #cccccc;
+}
