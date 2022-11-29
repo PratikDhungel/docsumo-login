@@ -1,4 +1,4 @@
-import './login.css';
+import './login.style.css';
 import appLogo from '../../assets/docsumoLogo.png';
 import { LoginForm } from '../../components';
 

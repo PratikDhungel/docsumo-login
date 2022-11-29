@@ -1,0 +1,14 @@
+.link-button {
+  margin-top: 8px;
+  display: inline-block;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.link-button:hover {
+  color: #344bfc;
+  text-decoration: underline;
+}

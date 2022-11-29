@@ -1,8 +1,17 @@
-import './input.css';
+import './input.style.css';
 
-const TextInput = ({ label, value, onChange, isError, errorMsg, Icon, ...rest }) => {
+const TextInput = ({
+  label,
+  value,
+  onChange,
+  isError,
+  errorMsg,
+  Icon,
+  showMargin,
+  ...rest
+}) => {
   return (
-    <div className='input-wrapper'>
+    <div className={showMargin ? 'mb-24' : 'mb-0'}>
       <label className='input-label'>{label}</label>
 
       <div className='input-field-container'>
