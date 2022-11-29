@@ -2,8 +2,11 @@ import { Navigate, Routes, Route } from 'react-router-dom';
 import { Dashboard, Login, NotFound } from '../pages';
 import PublicRoutes from './PublicRoutes';
 import PrivateRoutes from './PrivateRoutes';
+import { useGlobalContext } from '../GlobalContext';
 
-const AppRouter = ({ isAuth }) => {
+const AppRouter = () => {
+  const { isAuth } = useGlobalContext();
+
   return (
     <Routes>
       <Route

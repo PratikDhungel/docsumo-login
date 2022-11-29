@@ -10,7 +10,7 @@ const checkEmailPasswordValidity = (email, password) => {
 
   return {
     emailError: isEmailValid ? '' : emailError,
-    passwordError: isPasswordEmpty ? 'Password is required' : '',
+    passwordError: isPasswordEmpty ? 'Please enter a password' : '',
   };
 };
 
