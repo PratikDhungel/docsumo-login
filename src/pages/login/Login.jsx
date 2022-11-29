@@ -3,9 +3,10 @@ import appLogo from '../../assets/docsumoLogo.png';
 import { LoginForm } from '../../components';
 import { post } from '../../api';
 import { useGlobalContext } from '../../GlobalContext';
+import { setItem } from '../../utils';
 
 const Login = () => {
-  const { updateUserAuth, updateUserInfo } = useGlobalContext();
+  const { setIsAuth, setUserInfo } = useGlobalContext();
 
   const handleUserLogin = async (email, password) => {
     try {
@@ -18,9 +19,13 @@ const Login = () => {
       const token = responseData?.token || '';
       const userInfo = responseData?.user || {};
 
-      updateUserAuth(token);
-      updateUserInfo(userInfo);
+      setIsAuth(true);
+      setUserInfo(userInfo);
+
+      setItem('token', token);
+      setItem('userInfo', userInfo);
     } catch (err) {
+      console.log(err);
       const { error, message } = err?.response?.data;
       const combinedMessage = `${error || ''}! ${message || ''}`;
 

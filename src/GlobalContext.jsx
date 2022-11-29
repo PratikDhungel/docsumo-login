@@ -13,18 +13,8 @@ const GlobalContextProvider = ({ children }) => {
   const [userInfo, setUserInfo] = useState(getItem('userInfo'));
   const [isAuth, setIsAuth] = useState(!!getItem('token'));
 
-  const updateUserAuth = (token) => {
-    setIsAuth(true);
-    setItem('token', token);
-  };
-
-  const updateUserInfo = (userInfo) => {
-    setUserInfo(userInfo);
-    setItem('userInfo', userInfo);
-  };
-
   return (
-    <GlobalContext.Provider value={{ userInfo, isAuth, updateUserAuth, updateUserInfo }}>
+    <GlobalContext.Provider value={{ userInfo, isAuth, setIsAuth, setUserInfo }}>
       {children}
     </GlobalContext.Provider>
   );
