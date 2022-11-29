@@ -5,3 +5,15 @@
 .mb-24 {
   margin-bottom: 24px;
 }
+
+.mt-32 {
+  margin-top: 32px;
+}
+
+.font-18 {
+  font-size: 18px;
+}
+
+.bold {
+  font-weight: 700;
+}

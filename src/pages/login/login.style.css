@@ -1,6 +1,6 @@
 .login-wrapper {
   height: 100%;
-  background: url('../../assets/loginBackground.png');
+  background: url('../../assets/loginBackground.png') no-repeat 100% 100%;
   background-size: cover;
   position: relative;
   padding: 30px 60px;
@@ -25,6 +25,7 @@
 .login-form-container {
   width: 50%;
   min-width: 548px;
+  max-width: 640px;
   background-color: #fff;
   padding: 54px 64px;
   border-radius: 8px;
@@ -37,4 +38,8 @@
 
 .forgot-password-container {
   text-align: right;
+}
+
+.sign-up-button-container {
+  text-align: center;
 }

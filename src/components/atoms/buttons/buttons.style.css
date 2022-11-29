@@ -12,3 +12,25 @@
   color: #344bfc;
   text-decoration: underline;
 }
+
+.colored {
+  color: #4d61fc;
+}
+
+.primary-button {
+  width: 100%;
+  background: #4d61fc;
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 4px;
+  font-size: 16px;
+  border: 0;
+}
+
+.primary-button:hover {
+  background: #344bfc;
+}
+
+.primary-button:focus {
+  outline: 0;
+}

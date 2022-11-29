@@ -1,7 +1,16 @@
 import './buttons.style.css';
+import classNames from 'classnames';
 import { useNavigate } from 'react-router-dom';
 
-const LinkButton = ({ route, customOnClick, handleOnClick, children }) => {
+const LinkButton = ({
+  route,
+  customOnClick,
+  handleOnClick,
+  children,
+  largerButton,
+  colored,
+  ...rest
+}) => {
   const navigate = useNavigate();
 
   const handleButtonClick = () => {
@@ -15,7 +24,15 @@ const LinkButton = ({ route, customOnClick, handleOnClick, children }) => {
   };
 
   return (
-    <button className='link-button' onClick={handleButtonClick}>
+    <button
+      className={classNames('link-button', {
+        'font-18': largerButton,
+        'bold': largerButton,
+        'colored': colored,
+      })}
+      onClick={handleButtonClick}
+      {...rest}
+    >
       {children}
     </button>
   );
