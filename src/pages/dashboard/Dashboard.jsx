@@ -7,6 +7,7 @@ import './dashboard.style.css';
 const Dashboard = () => {
   const { userInfo, setIsAuth, setUserInfo } = useGlobalContext();
 
+  // Clear global state values and local storage
   const handleUserLogout = () => {
     setIsAuth(false);
     setUserInfo('');

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { checkEmailValidity } from '../../../utils';
 import { LinkButton, PrimaryButton, TextInput } from '../../atoms';
 import { ReactComponent as ShowPassword } from '../../../assets/showPassword.svg';
+import { ReactComponent as HidePassword } from '../../../assets/hidePassword.svg';
 
 const checkEmailPasswordValidity = (email, password) => {
   const { isValid: isEmailValid, message: emailError } = checkEmailValidity(email);
@@ -18,6 +19,7 @@ const LoginForm = ({ handleUserLogin }) => {
   const [formValues, setFormValues] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState({ email: '', password: '' });
   const [triggerValidation, setTriggerValidation] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   // Update state values when input changes
   const handleInputChange = (key, value) => {
@@ -57,6 +59,10 @@ const LoginForm = ({ handleUserLogin }) => {
     }
   }, [formValues]);
 
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -70,14 +76,15 @@ const LoginForm = ({ handleUserLogin }) => {
           showMargin
         />
         <TextInput
-          type='password'
+          type={showPassword ? 'text' : 'password'}
           label='Password'
           placeholder='Enter password here...'
           value={formValues.password}
           onChange={(e) => handleInputChange('password', e.target.value)}
           isError={!!errors.password}
           errorMsg={errors.password}
-          Icon={ShowPassword}
+          Icon={showPassword ? HidePassword : ShowPassword}
+          onIconClick={toggleShowPassword}
         />
 
         <div className='forgot-password-container'>

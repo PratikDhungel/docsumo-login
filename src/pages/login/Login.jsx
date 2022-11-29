@@ -19,13 +19,15 @@ const Login = () => {
       const token = responseData?.token || '';
       const userInfo = responseData?.user || {};
 
+      // Set auth to true and set user info in global context
       setIsAuth(true);
       setUserInfo(userInfo);
 
+      // Set both values to local storage
       setItem('token', token);
       setItem('userInfo', userInfo);
     } catch (err) {
-      console.log(err);
+      // Combine error message and alert on error
       const { error, message } = err?.response?.data;
       const combinedMessage = `${error || ''}! ${message || ''}`;
 

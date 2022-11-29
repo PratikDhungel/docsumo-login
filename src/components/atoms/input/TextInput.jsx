@@ -8,6 +8,7 @@ const TextInput = ({
   isError,
   errorMsg,
   Icon,
+  onIconClick,
   showMargin,
   ...rest
 }) => {
@@ -22,7 +23,7 @@ const TextInput = ({
           {...rest}
           className={classNames('input-field', { 'input-field-error': isError })}
         />
-        {Icon && <Icon className='input-icon' />}
+        {Icon && <Icon className='input-icon' onClick={onIconClick} />}
       </div>
 
       {isError && <span className='input-error'>{errorMsg}</span>}
