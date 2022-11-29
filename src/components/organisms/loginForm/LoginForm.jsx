@@ -1,15 +1,82 @@
+import { useEffect, useState } from 'react';
+import { checkEmailValidity } from '../../../utils';
 import { LinkButton, PrimaryButton, TextInput } from '../../atoms';
 import { ReactComponent as ShowPassword } from '../../../assets/showPassword.svg';
 
-const LoginForm = () => {
+const checkEmailPasswordValidity = (email, password) => {
+  const { isValid: isEmailValid, message: emailError } = checkEmailValidity(email);
+
+  const isPasswordEmpty = password === '';
+
+  return {
+    emailError: isEmailValid ? '' : emailError,
+    passwordError: isPasswordEmpty ? 'Password is required' : '',
+  };
+};
+
+const LoginForm = ({ handleUserLogin }) => {
+  const [formValues, setFormValues] = useState({ email: '', password: '' });
+  const [errors, setErrors] = useState({ email: '', password: '' });
+  const [triggerValidation, setTriggerValidation] = useState(false);
+
+  // Update state values when input changes
+  const handleInputChange = (key, value) => {
+    setFormValues((prev) => ({ ...prev, [key]: value }));
+  };
+
+  // Handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Set trigger validation to true when form is submitted
+    setTriggerValidation(true);
+
+    const { email, password } = formValues;
+
+    const { emailError, passwordError } = checkEmailPasswordValidity(email, password);
+
+    // If no errors present, handle user login
+    if (emailError === '' && passwordError === '') {
+      handleUserLogin(email, password);
+    } else {
+      // Else set form errors
+      setErrors((prev) => ({ ...prev, email: emailError, password: passwordError }));
+    }
+  };
+
+  // If submit button has been clicked once
+  // trigger form validation on each input change
+  useEffect(() => {
+    if (triggerValidation) {
+      const { emailError, passwordError } = checkEmailPasswordValidity(
+        formValues.email,
+        formValues.password
+      );
+
+      setErrors((prev) => ({ ...prev, email: emailError, password: passwordError }));
+    }
+  }, [formValues]);
+
   return (
     <div>
-      <form>
-        <TextInput label='Work Email' placeholder='janedoe@abc.com' showMargin />
+      <form onSubmit={handleSubmit}>
+        <TextInput
+          label='Work Email'
+          placeholder='janedoe@abc.com'
+          value={formValues.email}
+          onChange={(e) => handleInputChange('email', e.target.value)}
+          isError={!!errors.email}
+          errorMsg={errors.email}
+          showMargin
+        />
         <TextInput
           type='password'
           label='Password'
           placeholder='Enter password here...'
+          value={formValues.password}
+          onChange={(e) => handleInputChange('password', e.target.value)}
+          isError={!!errors.password}
+          errorMsg={errors.password}
           Icon={ShowPassword}
         />
 
@@ -17,7 +84,7 @@ const LoginForm = () => {
           <LinkButton>Forgot Password?</LinkButton>
         </div>
 
-        <div className='mt-32'>
+        <div className='mt-32' type='submit'>
           <PrimaryButton>Login</PrimaryButton>
         </div>
       </form>

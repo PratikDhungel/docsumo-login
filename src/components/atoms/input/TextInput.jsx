@@ -1,4 +1,5 @@
 import './input.style.css';
+import classNames from 'classnames';
 
 const TextInput = ({
   label,
@@ -15,9 +16,16 @@ const TextInput = ({
       <label className='input-label'>{label}</label>
 
       <div className='input-field-container'>
-        <input value={value} onChange={onChange} {...rest} className='input-field' />
+        <input
+          value={value}
+          onChange={onChange}
+          {...rest}
+          className={classNames('input-field', { 'input-field-error': isError })}
+        />
         {Icon && <Icon className='input-icon' />}
       </div>
+
+      {isError && <span className='input-error'>{errorMsg}</span>}
     </div>
   );
 };

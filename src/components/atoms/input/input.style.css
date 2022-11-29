@@ -30,9 +30,19 @@
   border-color: #000;
 }
 
+.input-field-error {
+  border: 1px solid #c2004f;
+}
+
 .input-icon {
   position: absolute;
   top: 8px;
   right: 12px;
   cursor: pointer;
+}
+
+.input-error {
+  font-size: 14px;
+  color: #c2004f;
+  margin-top: 8px;
 }
